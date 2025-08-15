@@ -54,3 +54,5 @@ Hi! My name is -Aashika Patel.
 > Feel free to reach out if you'd like to collaborate or learn more about our work.
 
 <p style="color: #dac4e4ff;">Open Coding Society: <a href="https://opencodingsociety.com" style="color: #000000ff; text-decoration: underline;">Socials</a></p>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<i class="fa-solid fa-donut"></i>
