@@ -42,7 +42,7 @@ Hi! My name is Aashika Patel.
 <a href="{{site.baseurl}}/snake" class="button small" style="background-color: #ceacfeff">
     Snake Game
 </a>
-<a href="{{site.baseurl}}/turtle" class="button small" style="background-color: #000000ff">
+<a href="{{site.baseurl}}/turtle" class="button small" style="background-color: #f1d0f3ff">
     <span style="color: #000000">Turtle</span>
 </a>
 
@@ -53,6 +53,6 @@ Hi! My name is Aashika Patel.
 
 > Feel free to reach out if you'd like to collaborate or learn more about our work.
 
-<p style="color: #dac4e4ff;">Open Coding Society: <a href="https://opencodingsociety.com" style="color: #000000ff; text-decoration: underline;">Socials</a></p>
+<p style="color: #dac4e4ff;">Open Coding Society: <a href="https://opencodingsociety.com" style="color: #9dbee5ff; text-decoration: underline;">Socials</a></p>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <i class="fa-solid fa-donut"></i>
