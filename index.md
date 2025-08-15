@@ -134,8 +134,8 @@ Hi! My name is -Aashika Patel.
     const CONFETTI_COUNT = 160; // total confetti pieces
 
     const confettiColors = [
-      "#FF6B6B", "#FFD166", "#06D6A0", "#118AB2", "#9B5DE5",
-      "#F15BB5", "#00BBF9", "#FEE440", "#8AC926", "#FF595E"
+      "#ffa5eeff", "#cc98dfff", "#06D6A0", "#118AB2", "#9B5DE5",
+      "#F15BB5", "#00BBF9", "#FEE440", "#8AC926", "#c4151aff"
     ];
 
     // Create random helper
