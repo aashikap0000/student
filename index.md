@@ -43,7 +43,7 @@ Hi! My name is Aashika Patel.
     Snake Game
 </a>
 <a href="{{site.baseurl}}/turtle" class="button small" style="background-color: #f1d0f3ff">
-    <span style="color: #000000">Turtle</span>
+    <span style="color: #95c7e4ff">Turtle</span>
 </a>
 
 <br>
