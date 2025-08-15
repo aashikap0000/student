@@ -6,7 +6,7 @@ hide: true
 
 ### Me and Team
 
-Hi! My name is [Aashika Patel].
+Hi! My name is Aashika Patel.
 
 | Role         | Name     | Repo Location                       | Stream                | Repo Name |
 |--------------|----------|-------------------------------------|-----------------------|-----------|
