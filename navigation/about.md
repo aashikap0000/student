@@ -1,138 +1,140 @@
 ---
-layout: post
-title: About
-permalink: /about/
-comments: true
+layout: base
+title: I'm Aashika Patel
+hide: true
 ---
 
-## As a conversation Starter
+### Me and Team
 
-Here are some places I have lived.
+Hi! My name is Aashika Patel.
 
-<comment>
-Flags are made using Wikipedia images
-</comment>
+| Role         | Name     | Repo Location                       | Stream                | Repo Name |
+|--------------|----------|-------------------------------------|-----------------------|-----------|
+| Scrum Master | John     | github.com/jm1021/student           | upstream (OCS fork)   | student   |
+| Scrummer     | Torin    | github.com/torin/student            | downstream (fork)     | student   |
+| Scrummer     | Avantika | github.com/avantika/student         | downstream (fork)     | student   |
+| Scrummer     | Aadit    | github.com/aaadit/student           | downstream (fork)     | student   |
 
-<style>
-    /* Style looks pretty compact, 
-       - grid-container and grid-item are referenced the code 
-    */
-    .grid-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Dynamic columns */
-        gap: 10px;
+
+## Links to Learning
+
+### Development Environment
+
+<a href="https://github.com/Open-Coding-Society/student">
+    <img src="https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white" alt="GitHub">
+</a>
+<a href="https://open-coding-society.github.io/student">
+    <img src="https://img.shields.io/badge/GitHub%20Pages-327FC7?logo=github&logoColor=white" alt="GitHub Pages">
+</a>
+<a href="https://kasm.opencodingsociety.com/" class="button small" style="background-color: #ffacdfff">
+    KASM
+</a>
+<a href="https://vscode.dev/" class="button small" style="background-color: #941e55ff">
+    <span style="color: #FFFFFF">VSCODE</span>
+</a>
+
+<br>
+
+### Class Progress
+
+<a href="{{site.baseurl}}/snake" class="button small" style="background-color: #ceacfeff">
+    Snake Game
+</a>
+<a href="{{site.baseurl}}/turtle" class="button small" style="background-color: #f1d0f3ff">
+    <span style="color: #000000">Turtle</span>
+</a>
+
+<br>
+
+---
+
+## 🌎 Journey Through Life
+
+<div style="text-align:center;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Flag_of_California.svg" alt="California Flag" width="120">
+    <img src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" alt="India Flag" width="120">
+</div>
+
+- 📍 Elementary and middle school in San Diego  
+- 🎓 High school in San Diego, currently a senior (Class of 2026)  
+- 📊 Want to study **data science/engineering** in college  
+- 🐶 My dog **Mocha** is 9 years old  
+- ☕ Dream job → owning a really **aesthetic coffee shop or study cafe**  
+
+<div style="text-align:center; margin-top:10px;">
+    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93" alt="Coffee Shop" width="400" style="border-radius: 15px; box-shadow: 0px 4px 8px rgba(0,0,0,0.2);">
+</div>
+
+---
+
+## 🎉 Culture, Family, Fun
+
+- 🐕 Click below to release a few dogs on the screen!  
+<button onclick="releaseDogs()" style="background-color:#ffd9e8; padding:10px; border:none; border-radius:10px; cursor:pointer;">
+    🐶 Release Dogs
+</button>  
+
+- 👩‍👧 I have one older sister who's **22 years old**  
+- 🎶 I love listening to music, reading, and dancing in my free time  
+
+<script>
+function releaseDogs() {
+    for (let i = 0; i < 3; i++) {
+        let dog = document.createElement("div");
+        dog.innerHTML = "🐕";
+        dog.style.position = "fixed";
+        dog.style.left = Math.random() * window.innerWidth + "px";
+        dog.style.top = Math.random() * window.innerHeight + "px";
+        dog.style.fontSize = "40px";
+        dog.style.zIndex = "1000";
+        document.body.appendChild(dog);
     }
-    .grid-item {
-        text-align: center;
-    }
-    .grid-item img {
-        width: 100%;
-        height: 100px; /* Fixed height for uniformity */
-        object-fit: contain; /* Ensure the image fits within the fixed height */
-    }
-    .grid-item p {
-        margin: 5px 0; /* Add some margin for spacing */
-    }
+}
+</script>
 
-    .image-gallery {
-        display: flex;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        gap: 10px;
-        }
+---
 
-    .image-gallery img {
-        max-height: 150px;
-        object-fit: cover;
-        border-radius: 5px;
-    }
-</style>
+## 🍴 Favorite Foods Gallery
 
-<!-- This grid_container class is used by CSS styling and the id is used by JavaScript connection -->
-<div class="grid-container" id="grid_container">
-    <!-- content will be added here by JavaScript -->
+<p>Click on the food buttons below to make them appear on the screen!</p>
+
+<div style="display:flex; flex-wrap:wrap; gap:15px;">
+    <button onclick="spawnFood('🍩')" style="border:none; background:none; cursor:pointer;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d6/Donut.png" width="70">
+    </button>
+    <button onclick="spawnFood('🍦')" style="border:none; background:none; cursor:pointer;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Vanilla_Ice_Cream_Cone_at_Central_Market.jpg" width="70">
+    </button>
+    <button onclick="spawnFood('🧀')" style="border:none; background:none; cursor:pointer;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Macaroni_and_cheese.jpg" width="70">
+    </button>
+    <button onclick="spawnFood('🍝')" style="border:none; background:none; cursor:pointer;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Spaghetti_alle_vongole.jpg" width="70">
+    </button>
+    <button onclick="spawnFood('🍕')" style="border:none; background:none; cursor:pointer;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Pepperoni_pizza.jpg" width="70">
+    </button>
+    <button onclick="spawnFood('🥡')" style="border:none; background:none; cursor:pointer;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Chinese_take_out_box.jpg" width="70">
+    </button>
 </div>
 
 <script>
-    // 1. Make a connection to the HTML container defined in the HTML div
-    var container = document.getElementById("grid_container"); // This container connects to the HTML div
-
-    // 2. Define a JavaScript object for our http source and our data rows for the Living in the World grid
-    var http_source = "https://upload.wikimedia.org/wikipedia/commons/";
-    var living_in_the_world = [
-        {"flag": "0/01/Flag_of_California.svg", "greeting": "Hey", "description": "California - forever"},
-        {"flag": "b/b9/Flag_of_Oregon.svg", "greeting": "Hi", "description": "Oregon - 9 years"},
-        {"flag": "b/be/Flag_of_England.svg", "greeting": "Alright mate", "description": "England - 2 years"},
-        {"flag": "e/ef/Flag_of_Hawaii.svg", "greeting": "Aloha", "description": "Hawaii - 2 years"},
-    ];
-
-    // 3a. Consider how to update style count for size of container
-    // The grid-template-columns has been defined as dynamic with auto-fill and minmax
-
-    // 3b. Build grid items inside of our container for each row of data
-    for (const location of living_in_the_world) {
-        // Create a "div" with "class grid-item" for each row
-        var gridItem = document.createElement("div");
-        gridItem.className = "grid-item";  // This class name connects the gridItem to the CSS style elements
-        // Add "img" HTML tag for the flag
-        var img = document.createElement("img");
-        img.src = http_source + location.flag; // concatenate the source and flag
-        img.alt = location.flag + " Flag"; // add alt text for accessibility
-
-        // Add "p" HTML tag for the description
-        var description = document.createElement("p");
-        description.textContent = location.description; // extract the description
-
-        // Add "p" HTML tag for the greeting
-        var greeting = document.createElement("p");
-        greeting.textContent = location.greeting;  // extract the greeting
-
-        // Append img and p HTML tags to the grid item DIV
-        gridItem.appendChild(img);
-        gridItem.appendChild(description);
-        gridItem.appendChild(greeting);
-
-        // Append the grid item DIV to the container DIV
-        container.appendChild(gridItem);
-    }
+function spawnFood(foodEmoji) {
+    let food = document.createElement("div");
+    food.innerHTML = foodEmoji;
+    food.style.position = "fixed";
+    food.style.left = Math.random() * window.innerWidth + "px";
+    food.style.top = Math.random() * window.innerHeight + "px";
+    food.style.fontSize = "50px";
+    food.style.zIndex = "1000";
+    document.body.appendChild(food);
+}
 </script>
 
-### Journey through Life
+---
 
-Here is what I did at those places
+<!-- Contact Section -->
+### Get in Touch
 
-- 🏫 Lots of Elementary Schools in Tucson, LA, Honolulu, and Glendale (CA)
-- 🏫 Middle and High School in Glendale (CA), Hoover High graduated '77
-- 🎓 Glendale CA Community College, UCLA Extension, LA Wilshire Computer Tech School '77 to '79
-- ⛪ England, London Missionary for Church of Jesus Christ of Latter-day Saints '79 to '81
-- 💼 Culver City, Glendale CA founder at Ashton-Tate, original PC's dBase 2 and 3 '82 to '87
-- 🎓 Eugene Oregon Undergraduate CompSci Degree at University of Oregon (Go Ducks!) '89 to '91
-- 💼 Eugene Oregon, founder and owner @ Microniche `88, Point Control CAD CAM developer '91 to '96
-- 🏢 San Diego CA Qualcomm, Satellite Comm and 1st Mobile OS (BREW) '96 to '19
-- 👨‍🏫 San Diego CA Teacher of Computer Science @ Del Norte High School San Diego '19 to present
-
-### Culture, Family, and Fun
-
-Everything for me, as for many others, revolves around family and faith.
-
-- My mother told me that I was Danish, English. and Irish, here is my researched [family tree]({{site.baseurl}}/images/about/familytree.png)
-- My family is pretty big as I have been married twice, my 1st wife passed away.  We have had 5 kids, 4 adopted by me, 1 biological.  Plus, there are three grandkids.  My name to my grandkids is Abuilito.
-- The gallery of pics has some of my family, fun, culture and faith memories.
-
-<comment>
-Gallery of Pics, scroll to the right for more ...
-</comment>
-<div class="image-gallery">
-  <img src="{{site.baseurl}}/images/about/missionary.jpg" alt="Image 1">
-  <img src="{{site.baseurl}}/images/about/john_tamara.jpg" alt="Image 2">
-  <img src="{{site.baseurl}}/images/about/tamara_fam.jpg" alt="Image 3">
-  <img src="{{site.baseurl}}/images/about/surf.jpg" alt="Image 4">
-  <img src="{{site.baseurl}}/images/about/john_lora.jpg" alt="Image 5">
-  <img src="{{site.baseurl}}/images/about/lora_fam.jpg" alt="Image 6">
-  <img src="{{site.baseurl}}/images/about/lora_fam2.jpg" alt="Image 7">
-  <img src="{{site.baseurl}}/images/about/pj_party.jpg" alt="Image 8">
-  <img src="{{site.baseurl}}/images/about/trent_family.png" alt="Image 9">
-  <img src="{{site.baseurl}}/images/about/claire.jpg" alt="Image 10">
-  <img src="{{site.baseurl}}/images/about/grandkids.jpg" alt="Image 11">
-  <img src="{{site.baseurl}}/images/about/farm.jpg" alt="Image 12">
-</div>
+<p style="color: #dac4e4ff;">Open Coding Society: <a href="https://opencodingsociety.com" style="color: #9dbee5ff; text-decoration: underline;">Socials</a></p>
