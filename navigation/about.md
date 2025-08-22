@@ -103,6 +103,7 @@ comments: true
 ---
 
 ## You Are What You Eat
+<p>Some of my favorite foods </p>
 
 <p>Click a food to make it appear — click again to make it disappear!</p>
 
