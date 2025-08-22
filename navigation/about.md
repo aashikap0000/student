@@ -102,11 +102,11 @@ comments: true
 
 ---
 
-## You Are What You Eat
-# 🍴 Some of my favorite foods!
+## 🍴 Some of my favorite foods!  
 
+# You Are What You Eat  
 
-<p>Click a food to make it appear — click again to make it disappear!</p>
+<p>Click a food to make it appear — click again to make it disappear!</p>  
 
 <div class="food-buttons">
   <button style="background-color: #ffadad;" onclick="toggleFood('🍕','pizza')">Pizza</button>
