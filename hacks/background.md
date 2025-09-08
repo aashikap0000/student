@@ -1,9 +1,9 @@
 ---
 layout: base
 title: Background with Object
-description: Use JavaScript to have an in-motion background.
-sprite: /images/platformer/sprites/flying-ufo.png
-background: /images/platformer/backgrounds/alien_planet1.jpg
+description: Use JavaScript to have an in motion background.
+sprite: images/platformer/sprites/flying-ufo.png
+background: images/platformer/backgrounds/alien_planet1.jpg
 permalink: /background
 ---
 
@@ -12,28 +12,20 @@ permalink: /background
 <script>
   const canvas = document.getElementById("world");
   const ctx = canvas.getContext('2d');
-
-  // Full window canvas
-  function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-  window.addEventListener('resize', resizeCanvas);
-  resizeCanvas();
-
   const backgroundImg = new Image();
   const spriteImg = new Image();
-
-  backgroundImg.src = '{{ page.background | relative_url }}';
-  spriteImg.src = '{{ page.sprite | relative_url }}';
+  backgroundImg.src = '{{page.background}}';
+  spriteImg.src = '{{page.sprite}}';
 
   let imagesLoaded = 0;
-
-  backgroundImg.onload = () => { imagesLoaded++; startGameWorld(); };
-  backgroundImg.onerror = () => { console.error('Background failed to load:', backgroundImg.src); };
-
-  spriteImg.onload = () => { imagesLoaded++; startGameWorld(); };
-  spriteImg.onerror = () => { console.error('Sprite failed to load:', spriteImg.src); };
+  backgroundImg.onload = function() {
+    imagesLoaded++;
+    startGameWorld();
+  };
+  spriteImg.onload = function() {
+    imagesLoaded++;
+    startGameWorld();
+  };
 
   function startGameWorld() {
     if (imagesLoaded < 2) return;
@@ -56,7 +48,7 @@ permalink: /background
 
     class Background extends GameObject {
       constructor(image, gameWorld) {
-        // Scale background to fill canvas
+        // Fill entire canvas
         super(image, gameWorld.width, gameWorld.height, 0, 0, 0.1);
       }
       update() {
@@ -70,11 +62,10 @@ permalink: /background
 
     class Player extends GameObject {
       constructor(image, gameWorld) {
-        // Proportional UFO size based on canvas
-        const width = canvas.width * 0.05;   // 5% of canvas width
-        const height = (image.naturalHeight / image.naturalWidth) * width;
-        const x = canvas.width * 0.5 - width / 2;
-        const y = canvas.height * 0.5 - height / 2;
+        const width = image.naturalWidth / 2;
+        const height = image.naturalHeight / 2;
+        const x = (gameWorld.width - width) / 2;
+        const y = (gameWorld.height - height) / 2;
         super(image, width, height, x, y);
         this.baseY = y;
         this.frame = 0;
@@ -88,14 +79,21 @@ permalink: /background
     class GameWorld {
       static gameSpeed = 5;
       constructor(backgroundImg, spriteImg) {
-        this.canvas = canvas;
-        this.ctx = ctx;
-        this.width = canvas.width;
-        this.height = canvas.height;
+        this.canvas = document.getElementById("world");
+        this.ctx = this.canvas.getContext('2d');
+        this.width = window.innerWidth;
+        this.height = window.innerHeight;
+        this.canvas.width = this.width;
+        this.canvas.height = this.height;
+        this.canvas.style.width = `${this.width}px`;
+        this.canvas.style.height = `${this.height}px`;
+        this.canvas.style.position = 'absolute';
+        this.canvas.style.left = `0px`;
+        this.canvas.style.top = `${(window.innerHeight - this.height) / 2}px`;
 
         this.objects = [
-          new Background(backgroundImg, this),
-          new Player(spriteImg, this)
+         new Background(backgroundImg, this),
+         new Player(spriteImg, this)
         ];
       }
       gameLoop() {
@@ -114,4 +112,3 @@ permalink: /background
     const world = new GameWorld(backgroundImg, spriteImg);
     world.start();
   }
-</script>
