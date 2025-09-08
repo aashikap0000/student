@@ -1,9 +1,9 @@
 ---
-layout: opencs
+layout: base
 title: Background with Object
 description: Use JavaScript to have an in motion background.
-sprite: /images/platformer/sprites/flying-ufo.png
-background: /images/platformer/backgrounds/alien_planet1.jpg
+sprite: /student/images/platformer/sprites/flying-ufo.png
+background: /student/images/platformer/backgrounds/alien_planet1.jpg
 permalink: /background
 ---
 
@@ -14,8 +14,8 @@ permalink: /background
   const ctx = canvas.getContext('2d');
   const backgroundImg = new Image();
   const spriteImg = new Image();
-  backgroundImg.src = '{{page.background}}';
-  spriteImg.src = '{{page.sprite}}';
+  backgroundImg.src = '{{ page.background | relative_url }}';
+  spriteImg.src = '{{ page.sprite | relative_url }}';
 
   let imagesLoaded = 0;
   backgroundImg.onload = function() {
