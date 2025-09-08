@@ -1,7 +1,7 @@
 ---
 layout: base
 title: Background with Object
-description: Use JavaScript to have an in motion background.
+description: Use JavaScript to have an in-motion background.
 sprite: /student/images/platformer/sprites/flying-ufo.png
 background: /student/images/platformer/backgrounds/alien_planet1.jpg
 permalink: /background
@@ -10,21 +10,37 @@ permalink: /background
 <canvas id="world"></canvas>
 
 <script>
+  // Get canvas and context
   const canvas = document.getElementById("world");
   const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  // Load images
   const backgroundImg = new Image();
   const spriteImg = new Image();
+
   backgroundImg.src = '{{ page.background | relative_url }}';
   spriteImg.src = '{{ page.sprite | relative_url }}';
 
   let imagesLoaded = 0;
+
   backgroundImg.onload = function() {
+    console.log('Background loaded:', backgroundImg.src);
     imagesLoaded++;
     startGameWorld();
   };
+  backgroundImg.onerror = function() {
+    console.error('Background failed to load:', backgroundImg.src);
+  };
+
   spriteImg.onload = function() {
+    console.log('Sprite loaded:', spriteImg.src);
     imagesLoaded++;
     startGameWorld();
+  };
+  spriteImg.onerror = function() {
+    console.error('Sprite failed to load:', spriteImg.src);
   };
 
   function startGameWorld() {
@@ -48,7 +64,6 @@ permalink: /background
 
     class Background extends GameObject {
       constructor(image, gameWorld) {
-        // Fill entire canvas
         super(image, gameWorld.width, gameWorld.height, 0, 0, 0.1);
       }
       update() {
@@ -79,23 +94,17 @@ permalink: /background
     class GameWorld {
       static gameSpeed = 5;
       constructor(backgroundImg, spriteImg) {
-        this.canvas = document.getElementById("world");
-        this.ctx = this.canvas.getContext('2d');
-        this.width = window.innerWidth;
-        this.height = window.innerHeight;
-        this.canvas.width = this.width;
-        this.canvas.height = this.height;
-        this.canvas.style.width = `${this.width}px`;
-        this.canvas.style.height = `${this.height}px`;
-        this.canvas.style.position = 'absolute';
-        this.canvas.style.left = `0px`;
-        this.canvas.style.top = `${(window.innerHeight - this.height) / 2}px`;
+        this.canvas = canvas;
+        this.ctx = ctx;
+        this.width = canvas.width;
+        this.height = canvas.height;
 
         this.objects = [
-         new Background(backgroundImg, this),
-         new Player(spriteImg, this)
+          new Background(backgroundImg, this),
+          new Player(spriteImg, this)
         ];
       }
+
       gameLoop() {
         this.ctx.clearRect(0, 0, this.width, this.height);
         for (const obj of this.objects) {
@@ -104,6 +113,7 @@ permalink: /background
         }
         requestAnimationFrame(this.gameLoop.bind(this));
       }
+
       start() {
         this.gameLoop();
       }
@@ -112,3 +122,4 @@ permalink: /background
     const world = new GameWorld(backgroundImg, spriteImg);
     world.start();
   }
+</script>
