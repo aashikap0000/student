@@ -113,13 +113,20 @@ permalink: /background
     /* Game World is master class/object for the entire game
     * the game loop is inside
     */
-    class GameWorld {
+  class GameWorld {
       static gameSpeed = 5;
       constructor(backgroundImg, spriteImg) {
-        this.canvas = canvas;
-        this.ctx = ctx;
-        this.width = canvas.width;
-        this.height = canvas.height;
+        this.canvas = document.getElementById("world");
+        this.ctx = this.canvas.getContext('2d');
+        this.width = window.innerWidth;
+        this.height = window.innerHeight;
+        this.canvas.width = this.width;
+        this.canvas.height = this.height;
+        this.canvas.style.width = `${this.width}px`;
+        this.canvas.style.height = `${this.height}px`;
+        this.canvas.style.position = 'absolute';
+        this.canvas.style.left = `0px`;
+        this.canvas.style.top = `${(window.innerHeight - this.height) / 2}px`;
 
         // Game objects are created
         this.objects = [
