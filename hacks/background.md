@@ -17,9 +17,13 @@ permalink: /background
   const canvas = document.getElementById("world");
   const ctx = canvas.getContext('2d');
 
-  // Set canvas to full window
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  // Function to resize canvas to always fit the window
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resizeCanvas(); // Run once on load
+  window.addEventListener("resize", resizeCanvas); // Adjust when window resizes
 
   const backgroundImg = new Image();
   const spriteImg = new Image();
@@ -74,9 +78,12 @@ permalink: /background
       constructor(image, gameWorld) {
         // Fill entire canvas
         super(image, gameWorld.width, gameWorld.height, 0, 0, 0.1);
+        this.gameWorld = gameWorld;
       }
       update() {
         this.x = (this.x - this.speed) % this.width;
+        this.width = this.gameWorld.width;
+        this.height = this.gameWorld.height;
       }
       draw(ctx) {
         ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
@@ -123,6 +130,10 @@ permalink: /background
 
       // This keeps game alive and running
       gameLoop() {
+        // Keep canvas size synced to window on every frame
+        this.width = canvas.width;
+        this.height = canvas.height;
+
         this.ctx.clearRect(0, 0, this.width, this.height);
         for (const obj of this.objects) {
           obj.update();
