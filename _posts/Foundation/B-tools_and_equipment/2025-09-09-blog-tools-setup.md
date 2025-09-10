@@ -8,15 +8,18 @@ toc: true
 nav: sprint_1.html
 ---
 
-Switching to setting up everything on my MacBook for CSP required downloading VS Code, managing multiple repositories, and troubleshooting all kinds of errors until I could finally get everything running. Here’s how I set everything up, step by step!
+Setting up everything on my MacBook for CSP required downloading VS Code, managing multiple repositories, and troubleshooting all kinds of errors until I could finally get everything running. Here’s how I set everything up, step by step!
 
-🍎 **1. Installing VS Code and Dependencies on Mac**  
-Downloaded VS Code from [https://code.visualstudio.com/](https://code.visualstudio.com/) and installed it on my Mac. Once installed, I set up the key extensions I needed:  
-- Python (Microsoft) – for debugging and running code  
-- Jupyter (Microsoft) – for notebooks integration  
-- GitLens – for Git history and insights  
+## 🍎 1. Installing VS Code and Dependencies on Mac
 
-Verified installations in the **Mac terminal**:
+Downloaded VS Code from [https://code.visualstudio.com/](https://code.visualstudio.com/) and installed it on my Mac. Once installed, I set up the key extensions I needed:
+
+- **Python (Microsoft)** – for debugging and running code  
+- **Jupyter (Microsoft)** – for notebooks integration  
+- **GitLens** – for Git history and insights  
+
+Verified installations in the Mac terminal:
+
 ```bash
 python3 --version
 git --version
@@ -80,11 +83,11 @@ To work with my team, I forked the team repository and cloned it locally. This a
 👾 6. Alien Background Hack
 One of the more fun challenges was getting the alien background and flying UFO to appear on my site. At first, my screen was completely white, then just grey. After debugging with my team, I realized:
 
-I wasn’t saving my changes (cmd + S!) before committing
+I wasn’t saving my changes (Cmd + S) before committing
 
-The code paths for the images were slightly off. We fixed it by making sure the image links used {{ page.background | relative_url }} and {{ page.sprite | relative_url }}.
+The code paths for the images were slightly off. We fixed it by making sure the image links used relative paths.
 
-I also had to adjust canvas dimensions to fit the entire screen window.
+I also had to adjust canvas dimensions to fit the entire screen window and handle window resizes
 
 After lots of small edits and testing, the game finally displayed correctly 🚀.
 
