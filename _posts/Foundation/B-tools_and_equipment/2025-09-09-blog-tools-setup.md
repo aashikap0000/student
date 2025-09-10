@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Tools Setup
+title: Blog Tools Setup
 description: Javascript
 permalink: /sprint/1/agile
 breadcrumb: true
