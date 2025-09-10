@@ -1,98 +1,149 @@
 ---
 layout: post
-title: "Tools Setup"
-description: "Javascript"
-permalink: /sprint/1/agile
-breadcrumb: true
-toc: true
-nav: sprint_1.html
+title: Tools Set-Up Blog on Mac
+permalink: /tools/setup-mac
+comments: true
 ---
 
-Switching to setting up everything on my MacBook for CSP required downloading VS Code, managing multiple repositories, and troubleshooting all kinds of errors until I could finally get everything running. Here’s how I set everything up, step by step!
+Switching to a MacBook for my CSP class required setting up VS Code, connecting GitHub, and learning how deployments and GitHub Actions worked. Here’s a walkthrough of my journey—from downloading VS Code to successfully organizing repositories, setting up environments, and collaborating with my team. 💻✨
 
-## 🍎 1. Installing VS Code and Dependencies on Mac
+## 🖥️ Installing VS Code and Dependencies on Mac
 
-Downloaded VS Code from [https://code.visualstudio.com/](https://code.visualstudio.com/) and installed it on my Mac. Once installed, I set up the key extensions I needed:
+Downloaded VS Code from [https://code.visualstudio.com/](https://code.visualstudio.com/) and installed it. During installation, I ensured:
 
-- **Python (Microsoft)** – for debugging and running code  
-- **Jupyter (Microsoft)** – for notebooks integration  
-- **GitLens** – for Git history and insights  
+- **Add VS Code to PATH** (so I can open it from Terminal)
+- **Enable Jupyter Notebook support**
 
-Verified installations in the Mac terminal:
+**Installed VS Code Extensions:**
 
-```bash
+- `Python (Microsoft)` – Python support and debugging
+- `Jupyter (Microsoft)` – Notebook integration
+- `GitLens` – Advanced Git history and insights
+
+## ✅ Verified Installations and Configured Git
+
+Check versions and set up Git:
+
+Check Python version
 python3 --version
+
+Check Git version
 git --version
-Configured Git with my info:
 
-bash
+Configure Git with my username and email
+git config --global user.name "Aashika P"
+git config --global user.email "aashikap0000@example.com"
+
+markdown
 Copy
 Edit
-git config --global user.name "Aashika Patel"
-git config --global user.email "aashikap0000@gmail.com"
 
-📂 2. Organizing My Repositories
-I cloned jm1021’s student template repo to create my own personal repo, and also cloned jm1021’s pages repo to contribute to the class site.
+## 📂 Organizing Repositories on Mac
 
-To stay organized, I kept:
+I structured my repositories carefully in directories for clarity:
 
-pages and student in the opencs directory
+- `~/opencs/`
+  - `pages` – Cloned from jm1021
+  - `student` – Template student repo
+- `~/aashikap0000/`
+  - `student-2` – My personal repo, moved here from `opencs`
 
-student-2 (my personal repo) in the aashikap0000 directory
+**Cloning repositories:**
 
-This required me to move student-2 from opencs → aashikap0000 using:
+Clone pages repo
+git clone https://github.com/jm1021/pages.git ~/opencs/pages
 
-bash
+Clone template student repo
+git clone https://github.com/jm1021/student.git ~/opencs/student
+
+Clone personal repo (moved later to aashikap0000)
+git clone https://github.com/aashikap0000/student-2.git ~/opencs/student-2
+mv ~/opencs/student-2 ~/aashikap0000/student-2
+
+css
 Copy
 Edit
-mv ~/opencs/student-2 ~/aashikap0000/
-🐍 3. Setting Up a Virtual Environment
-Created and activated a Python virtual environment to run everything smoothly:
 
-bash
-Copy
-Edit
+## 🐍 Setting Up a Virtual Environment
+
+I used Terminal (or VS Code integrated terminal) to create and activate a virtual environment:
+
+Navigate to my repo
+cd ~/aashikap0000/student-2
+
+Create virtual environment
 python3 -m venv venv
-source venv/bin/activate   # in Mac terminal or VS Code terminal
-Installed all dependencies from requirements.txt:
 
-bash
-Copy
-Edit
+Activate virtual environment
+source venv/bin/activate
+
+Install requirements
 pip install -r requirements.txt
-When some errors showed up, I had to install extra tools like wget and nbconvert:
 
-bash
-Copy
-Edit
+Install wget and nbconvert for certain notebook errors
 brew install wget
 pip install nbconvert
-⚙️ 4. Figuring Out make
-Getting make to work was one of the most frustrating parts. I had to figure out:
 
-making sure my virtual environment was activated before running make
+markdown
+Copy
+Edit
 
-ensuring my student-2 repo was in the aashikap0000 directory (not in opencs)
+Getting `make` to run was tricky—it took trial and error. I had to make sure:
 
-downloading requirements properly and rerunning when errors came up
+- Virtual environment was activated
+- All dependencies from `requirements.txt` were installed
+- My student-2 repo was in the correct `~/aashikap0000` directory
 
-This was a trial-and-error process 😅 but eventually, I built a system: check directory, activate venv, re-run make.
+Test make
+make
 
-🤝 5. Repository Collaboration
-To work with my team, I forked the team repository and cloned it locally. This allowed me to collaborate by committing changes and pushing updates.
+vbnet
+Copy
+Edit
 
-👾 6. Alien Background Hack
-One of the more fun challenges was getting the alien background and flying UFO to appear on my site. At first, my screen was completely white, then just grey. After debugging with my team, I realized:
+It didn’t work at first, but systematically checking directories, dependencies, and saving changes finally got everything running. 💪
 
-I wasn’t saving my changes (Cmd + S) before committing
+## 🤝 Repository Collaboration
 
-The code paths for the images were slightly off. We fixed it by making sure the image links used relative paths
+Created a fork of the team repository to collaborate with peers. This allowed me to push changes without affecting the main repo directly:
 
-I also had to adjust canvas dimensions to fit the entire screen window and handle window resizes
+Fork the repo on GitHub, then clone
+git clone https://github.com/aashikap0000/team-repo.git ~/opencs/team
 
-After lots of small edits and testing, the game finally displayed correctly 🚀.
+vbnet
+Copy
+Edit
 
-🌟 Final Thoughts
-This whole process taught me how important organization (repos, directories), patience (trial and error with make), and collaboration (team debugging sessions) are in coding. While it was difficult at times, I appreciated how much my team helped me out, and how each step taught me something new about working with Mac, GitHub, and VS Code.
+## 👾 Working on Backgrounds / Alien Hack
 
-Overall, I feel much more confident now about setting up tools, handling errors, and working as part of a collaborative team 🙌.
+I ran into an issue where my background screen appeared white, then grey. After investigation:
+
+- The problem was due to unsaved changes. I had to use **Cmd + S** and commit changes to make sure updates took effect.
+- Edited the code to adjust how background images were loaded so that it would display correctly.
+
+This taught me how small oversights in saving and committing could break code. It also showed how important debugging and iteration are. 🛠️
+
+## ✅ Overcoming Challenges
+
+The journey taught me a lot about:
+
+- Directory structures and managing multiple repos
+- Setting up virtual environments and troubleshooting commands like `make`
+- The necessity of saving, committing, and carefully editing code
+- How collaborative coding requires teamwork, patience, and trial-and-error problem-solving
+
+I really appreciated my team for their guidance and learned the value of working together to figure things out. Collaboration and persistence made this complex setup manageable and rewarding! 🌟
+
+## 📚 Key Git Commands I Used
+
+Check status
+git status
+
+Add changes
+git add <file_name>
+
+Commit changes
+git commit -m "Description of changes"
+
+Push changes to my fork
+git push
