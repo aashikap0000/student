@@ -5,7 +5,7 @@ title: Background with Object
 description: Use JavaScript to have an in-motion background.
 # These are locations of images
 sprite: /images/platformer/sprites/flying-ufo.png
-background: /images/platformer/backgrounds/alien_planet1.jpg
+background: https://images.unsplash.com/photo-1503803548695-c2a7b4a5b875?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c3Vuc2V0fGVufDB8fDB8fHww
 permalink: /background
 ---
 
