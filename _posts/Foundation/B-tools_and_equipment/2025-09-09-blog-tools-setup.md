@@ -1,14 +1,14 @@
 ---
 layout: post
-title: Blog Tools Setup
-description: Javascript
+title: "Tools Setup"
+description: "Javascript"
 permalink: /sprint/1/agile
 breadcrumb: true
 toc: true
 nav: sprint_1.html
 ---
 
-Setting up everything on my MacBook for CSP required downloading VS Code, managing multiple repositories, and troubleshooting all kinds of errors until I could finally get everything running. Here’s how I set everything up, step by step!
+Switching to setting up everything on my MacBook for CSP required downloading VS Code, managing multiple repositories, and troubleshooting all kinds of errors until I could finally get everything running. Here’s how I set everything up, step by step!
 
 ## 🍎 1. Installing VS Code and Dependencies on Mac
 
@@ -30,6 +30,7 @@ Copy
 Edit
 git config --global user.name "Aashika Patel"
 git config --global user.email "aashikap0000@gmail.com"
+
 📂 2. Organizing My Repositories
 I cloned jm1021’s student template repo to create my own personal repo, and also cloned jm1021’s pages repo to contribute to the class site.
 
@@ -85,7 +86,7 @@ One of the more fun challenges was getting the alien background and flying UFO t
 
 I wasn’t saving my changes (Cmd + S) before committing
 
-The code paths for the images were slightly off. We fixed it by making sure the image links used relative paths.
+The code paths for the images were slightly off. We fixed it by making sure the image links used relative paths
 
 I also had to adjust canvas dimensions to fit the entire screen window and handle window resizes
 
