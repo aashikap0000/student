@@ -74,29 +74,97 @@ By writing these explanations, I learned how to think like a beginner again, whi
 
 ---
 
-## 🤝 Team’s Plan with Lessons
+## 🤝 Team’s Plan with Lessons  
 
-From feedback and reflection, our team realized we needed to connect the game more with class lessons and make it more engaging and accessible.
+From feedback and reflection, our team realized we needed to connect the game more with **specific class lessons** and make it more engaging and accessible for all rookie coders. Below is a concrete, lesson-by-lesson plan + implementation roadmap and handoff strategy so the project scales and other students/teams can reuse our work.
 
-# Feedback we received:
+---
 
-- 👍 Fun and engaging concept for rookie coders 
+# 💬 Feedback We Received  
+- 👍 Fun and engaging concept for rookie coders  
+- 👎 Needs to tie more directly to course lessons (**Boolean, Iterations, Lists**)  
+- 👩‍💻 Should collaborate with advanced coders for design + accessibility improvements — advanced coders can elevate our idea by making it more professional and challenging
 
-- 👎 Needs to tie more directly to course lessons (Boolean, iterations, lists)
+---
 
-- 👩‍💻 Should collaborate with advanced coders for design + accessibility improvements, advanced coders can elevate our idea by making it more advanced 
+# 🚀 Our Plan Moving Forward (Detailed & Actionable)
 
-# Our plan moving forward:
+### 1) Implement 3 Lessons into the Game (Immediate Priority)  
+**Goal:** fully implement one playable, lesson-aligned quiz level for each of the three target lessons.  
+- **Boolean (Aashika + Varada):**
+  - Build a Level structure that focuses on expressions and conditionals: `true/false`, `and/or/not`, precedence, and compound conditions.
+  - Example question types: evaluate `if (x && y)` outcomes; predict the boolean result of chained comparisons.
+  - Add short, interactive examples that demonstrate how booleans drive program flow (e.g., a branching story visual).  
+- **Iterations (Nick + Anwita):**
+  - Create loop-focused questions: `for`, `while`, loop counters, off-by-one pitfalls.
+  - Example question types: predict loop output, choose correct loop to accomplish a task, fix an infinite loop.
+  - Visualize loops as repeated tasks (e.g., an animation showing repeated steps).  
+- **Lists (Ethan + Adhav):**
+  - Implement list/array operations: indexing, slicing, appending, removing, sorting.
+  - Example question types: choose the correct index to access an element, predict final list after operations.
+  - Use a "backpack" visual that collects items to illustrate list mutation.
 
-- 📝 Integrate actual lesson content into the quiz (not just random snippets), have a quiz-game for each lesson that focuses on testing coders while also teaching them 
+**Deliverable for each pair by end of sprint:** one fully functional lesson level with 15 questions, per-language scoring, and at least 5 detailed explanations.
 
-- 🎥 Add short (<1 min) explanatory videos alongside written explanations that are specific to the lesson 
+---
 
-- 🧩 Offer targeted practice based on scoreboard results that helps coders identify which part of the lesson they're having the most trouble with 
+### 2) Once Implemented — Create Lesson Materials (Teacher-Friendly)  
+**Goal:** convert each in-game lesson into a short classroom-ready lesson plan that teachers can pair with the game.  
+- **Lesson Plan Components (for each lesson):**
+  - Learning objective (e.g., "Students will evaluate boolean expressions and identify logical operators")  
+  - 3–5 slide bullet points covering the concept with one worked example  
+  - Quiz-game mapping: which in-game level/questions align with which slide/topic  
+  - 1 short homework prompt that uses the game (e.g., "Play Boolean Level, screenshot your scoreboard, and explain two mistakes")  
+- **Format:** `lesson-name.md` (or PDF) stored in repo `/lessons/` with links to the game-level permalink.
 
-- 🎨 Improve visual design + accessibility (color contrast, fonts, layout), our current website design isn't necessarily unappealing but it could be easier to understand
+**Deliverable:** 1 lesson file per implemented lesson, plus a teacher quick-start (how to assign the level and interpret scoreboard data).
 
-- 🌐 Eventually integrate into the OpenCS platform for broader use, students can directly access the game, the game isn't the whole lesson but apart of the lesson
+---
+
+### 3) Give "Hacks" & Implementation Guides to Other People (Scale & Reuse)  
+**Goal:** make it simple for others to adopt or fork our lesson-levels into their own games or class sites. Provide pragmatic, copy-paste friendly “hacks.”  
+- **What a "hack" guide includes:**
+  - Minimal code snippet for embedding a level (iframe/embed + parameters)  
+  - JSON example for question format (question, options, correct answer, explanation) so other teams can drop questions into their own engines  
+  - A short how-to: “3 steps to add a lesson to your site” (clone repo → copy `/levels/boolean.json` → update permalink)  
+  - Common pitfalls & fixes (e.g., how to escape HTML examples, ensure accessibility attributes, pre-commit `make` step)  
+- **Distribution:** add `/docs/hacks/` in repo with markdown files and a single `HACKS.md` overview; tweet or post in class Slack/Discord with a short how-to and link.
+
+---
+
+### 4) Multimedia & Targeted Practice (Enhancements)  
+- **Short videos (<1 min)** for each lesson highlighting concept + a micro-demo.  
+  - Boolean: decision tree animation.  
+  - Iterations: animated loop counter showing changes per iteration.  
+  - Lists: visual push/pop/insert operations.  
+- **Targeted practice:** scoreboard analytics will suggest follow-up drills:
+  - If Boolean errors > 30% → show 5 additional boolean-only questions + 1 micro-video.
+  - If Iterations errors concentrated around loop boundaries → show off-by-one drills.
+  - If Lists errors are index-based → show index mapping exercises and drag-and-drop practice.
+
+---
+
+### 5) Design, Accessibility & Advanced-Coder Collaboration  
+- Pair lesson pairs with one advanced coder reviewer to:
+  - Improve UI affordances (clearer buttons for novices, larger hit targets).  
+  - Ensure color contrast and keyboard navigation (WCAG basics).  
+  - Add ARIA labels for screen readers and test with a basic screen reader workflow.  
+- Advanced coders help refactor performance-sensitive parts (question loading, scoreboard calculations) and assist with embedding/analytics.
+
+---
+
+### 6) Integration with OpenCS & Teacher Workflow (Longer-Term)  
+- Provide an OpenCS integration plan: one page per lesson with embed code and teacher notes.  
+- Add an **assign** feature so teachers can create short assignments linking to a level and collect screenshots or scoreboard data.  
+- Pilot the OpenCS integration in one class section and collect feedback before full rollout.
+
+---
+
+## ✅ Success Criteria (how we'll know it's working)
+- Each lesson level is playable and maps to a 1-page lesson doc.  
+- New users can implement a level on their site using `HACKS.md` within 15 minutes.  
+- Playtest with 5 rookie coders shows measurable improvement (e.g., average score increase after explanations + one day of practice).  
+- At least one teacher integrates a lesson into their OpenCS flow for a pilot.
 
 ---
 
