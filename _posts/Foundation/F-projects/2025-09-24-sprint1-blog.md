@@ -207,9 +207,9 @@ From feedback and reflection, our team realized we needed to connect the game mo
 | Skill | Mastered (Y/N) | Rank (0-5) | Mastery Score (Pct) | Notes / Evidence |
 |-------|----------------|------------|----------------------|------------------|
 | Laptop Verification or Cloud Workspace | ✅ Y | 4 | 80.0% | Successfully set up cloud workspace and documented troubleshooting steps for WiFi and Python installs. |
-| VSCode Setup & Usage | ✅ Y | 3 | 60.0% | Moved from basic setup to using extensions (Prettier, Python) and debugging simple scripts. |
-| VSCode Sharing and Collaboration | ❌ N | 2 | 40.0% | Tried LiveShare with teammates, but still rely on screen-sharing when things break. Need to learn GitLens better. |
-| Student Repository Creation | ✅ Y | 4 | 80.0% | Created repo from template, added personalized README, organized files, and GitHub Actions are passing. |
+| VSCode Setup & Usage | ✅ Y | 3 | 60.0% | Moved from basic setup to using extensions (Python) and debugging simple scripts. |
+| VSCode Sharing and Collaboration | ❌ N | 2 | 40.0% | Tried Zoom with teammates, but still rely on screen-sharing when things break. Need to learn how to ask so I can do it myself. |
+| Student Repository Creation | ✅ Y | 4 | 80.0% | Created repo from template, added personalized files, organized files, and GitHub Actions are passing. |
 | Hacks: Tools & Equipment | ❌ N | 2 | 40.0% | Documented my first attempts but still forget to record full setup process when troubleshooting. |
 | Hacks: Portfolio and Blogging | ✅ Y | 3 | 60.0% | Built blog with posts, improved formatting with Markdown and front matter, learning to connect posts to project repo. |
 | Hacks: Theme, Style, Layout | ❌ N | 1 | 20.0% | Haven’t done much customization — blog uses stock theme, still exploring CSS tweaks. |
