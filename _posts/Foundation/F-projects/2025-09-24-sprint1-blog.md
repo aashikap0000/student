@@ -80,23 +80,23 @@ From feedback and reflection, our team realized we needed to connect the game mo
 
 # Feedback we received:
 
-- 👍 Fun and engaging concept for rookies
+- 👍 Fun and engaging concept for rookie coders 
 
-- 👎 Needs to tie more directly to course lessons
+- 👎 Needs to tie more directly to course lessons (Boolean, iterations, lists)
 
-- 👩‍💻 Should collaborate with advanced coders for design + accessibility improvements
+- 👩‍💻 Should collaborate with advanced coders for design + accessibility improvements, advanced coders can elevate our idea by making it more advanced 
 
 # Our plan moving forward:
 
-- 📝 Integrate actual lesson content into the quiz (not just random snippets)
+- 📝 Integrate actual lesson content into the quiz (not just random snippets), have a quiz-game for each lesson that focuses on testing coders while also teaching them 
 
-- 🎥 Add short (<1 min) explanatory videos alongside written explanations
+- 🎥 Add short (<1 min) explanatory videos alongside written explanations that are specific to the lesson 
 
-- 🧩 Offer targeted practice based on scoreboard results
+- 🧩 Offer targeted practice based on scoreboard results that helps coders identify which part of the lesson they're having the most trouble with 
 
-- 🎨 Improve visual design + accessibility (color contrast, fonts, layout)
+- 🎨 Improve visual design + accessibility (color contrast, fonts, layout), our current website design isn't necessarily unappealing but it could be easier to understand
 
-- 🌐 Eventually integrate into the OpenCS platform for broader use
+- 🌐 Eventually integrate into the OpenCS platform for broader use, students can directly access the game, the game isn't the whole lesson but apart of the lesson
 
 ---
 
