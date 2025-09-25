@@ -204,6 +204,49 @@ From feedback and reflection, our team realized we needed to connect the game mo
 
 ---
 
+| Skill | Mastered (Y/N) | Rank (0-5) | Mastery Score (Pct) | Notes / Evidence |
+|-------|----------------|------------|----------------------|------------------|
+| Laptop Verification or Cloud Workspace | ✅ Y | 4 | 80.0% | Successfully set up cloud workspace and documented troubleshooting steps for WiFi and Python installs. |
+| VSCode Setup & Usage | ✅ Y | 3 | 60.0% | Moved from basic setup to using extensions (Prettier, Python) and debugging simple scripts. |
+| VSCode Sharing and Collaboration | ❌ N | 2 | 40.0% | Tried LiveShare with teammates, but still rely on screen-sharing when things break. Need to learn GitLens better. |
+| Student Repository Creation | ✅ Y | 4 | 80.0% | Created repo from template, added personalized README, organized files, and GitHub Actions are passing. |
+| Hacks: Tools & Equipment | ❌ N | 2 | 40.0% | Documented my first attempts but still forget to record full setup process when troubleshooting. |
+| Hacks: Portfolio and Blogging | ✅ Y | 3 | 60.0% | Built blog with posts, improved formatting with Markdown and front matter, learning to connect posts to project repo. |
+| Hacks: Theme, Style, Layout | ❌ N | 1 | 20.0% | Haven’t done much customization — blog uses stock theme, still exploring CSS tweaks. |
+| Hacks: JavaScript Frontend Pick 2+ | ❌ N | 2 | 40.0% | Started learning fetch API and DOM manipulation, but only applied to small snippets, not full project yet. |
+| AI Evidence in Work | ✅ Y | 3 | 60.0% | Used AI to debug Markdown formatting and improve explanations. Showed iteration and my own edits beyond raw AI answers. |
+| Manifesto Evidence | ❌ N | 2 | 40.0% | Participated in peer commits and reviews, but still quiet in live reviews. Need to lead one myself. |
+| Learning Through Mistakes | ✅ Y | 4 | 80.0% | Documented multiple debugging errors (broken repo setup, bad Git push). Wrote reflections on how I fixed them. |
+
+| **Total Points** |   | **30** | **54.5%** | Sum of columns |
+| **Mastery Score** |   | **2.73** | **54.5%** | Average across skills |
+
+---
+
+## 📊 Skill Growth Evaluation
+
+| Skill | Mastered (Y/N) | Self Rank (1-5) | Peer Rank (1-5) | Teacher Rank (1-5) | Average | Notes / Evidence |
+|-------|----------------|------------------|-----------------|---------------------|---------|------------------|
+| 🎯 **Core Behaviors** ||||| |
+| Attendance | ✅ Y | 5 | 5 | 5 | 5.0 | Always present, reliable in daily standups and work sessions. |
+| Work Habits | ❌ N | 3 | 3 | 4 | 3.3 | Sometimes distracted, but improving consistency by setting small goals. |
+| Behavior | ✅ Y | 4 | 5 | 5 | 4.7 | Respectful and positive teammate, encourages others during work. |
+| Timeliness | ❌ N | 3 | 3 | 3 | 3.0 | Still late on a few commits/deliverables, but catching up faster than before. |
+| 💻 **Technical Skills** ||||| |
+| Tech/Cyber Sense | ✅ Y | 4 | 3 | 4 | 3.7 | Recognizes when code errors break main branch, improved at spotting JS issues. |
+| Tech/Cyber Talk | ❌ N | 2 | 3 | 3 | 2.7 | Learning to use precise coding terms with peers, still mixes casual language. |
+| Tech Growth | ✅ Y | 4 | 4 | 4 | 4.0 | Big improvement in debugging and adding explanations that help rookies. |
+| 🤝 **Collaboration** ||||| |
+| Advocacy | ❌ N | 2 | 3 | 3 | 2.7 | Hesitant to ask for help from advanced coders, working on speaking up more. |
+| Communication & Collab | ✅ Y | 4 | 4 | 5 | 4.3 | Shares updates regularly, good at integrating feedback into the project. |
+| 🎨 **Professional Skills** ||||| |
+| Integrity | ✅ Y | 5 | 5 | 5 | 5.0 | Always credits teammates, documents mistakes instead of hiding them. |
+| Organization | ❌ N | 3 | 2 | 3 | 2.7 | Needs to keep repos/blogs more organized, commits sometimes messy. |
+| 📈 **TOTALS** |   | **39** | **40** | **44** | **41.0** | Sum of all ranks |
+| 🎯 **AVERAGE SCORE** |   | **3.5** | **3.6** | **4.0** | **3.7** | Shows steady improvement |
+
+---
+
 ## 🌟 Overall Takeaway
 
 Sprint 1 was a mix of successes and struggles, but both pushed me to grow. I learned that:
