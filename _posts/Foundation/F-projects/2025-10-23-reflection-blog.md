@@ -54,11 +54,11 @@ These contributions show how I’ve made a consistent effort to communicate bett
 Here are the visuals I helped create for our Media Literacy project!  
 
 <p align="center">
-  <img src="/images/blogimage1.jpg" width="500" alt="Storyboard sketch for Media Literacy project">
+  <img src="{{ '/images/blogimage1.jpg' | relative_url }}" width="500" alt="Storyboard sketch for Media Literacy project">
 </p>
 
 <p align="center">
-  <img src="/images/blogimages2.jpg" width="500" alt="Whiteboard drawing and layout plan for game design">
+  <img src="{{ '/images/blogimage2.jpg' | relative_url }}" width="500" alt="Whiteboard drawing and layout plan for game design">
 </p>
 
 ---
