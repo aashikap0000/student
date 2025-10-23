@@ -58,7 +58,7 @@ Here are the visuals I helped create for our Media Literacy project!
 </p>
 
 <p align="center">
-  <img src="{{ '/images/blogimage2.jpg' | relative_url }}" width="500" alt="Whiteboard drawing and layout plan for game design">
+  <img src="{{ '/images/blogimages2.jpg' | relative_url }}" width="500" alt="Whiteboard drawing and layout plan for game design">
 </p>
 
 ---
