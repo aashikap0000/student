@@ -26,7 +26,7 @@ Behaviorally, I’ve also grown. I’m more collaborative, responsible, and enga
 | 🎯 **Core Behaviors** ||||| |
 | Attendance | ✅ Y | 5 | 5 | 5 | 5.0 | Almost always present, if not present, check with group members about missed work or contributions |
 | Work Habits | ❌ N | 3 | 3 | 4 | 3.3 | Sometimes distracted, but improving consistency by setting small goals. |
-| Behavior | ✅ Y | 4 | 5 | 5 | 4.7 | Respectful and positive teammate, encourages others during work. Have improved in talking to group members and being focused in class. |
+| Behavior | ✅ Y | 4 | 4 | 3 | 3.7 | Respectful and positive teammate, encourages others during work. Have improved in talking to group members and being focused in class. |
 | Timeliness | ❌ N | 3 | 3 | 3 | 3.0 | Still late on a few commits/deliverables, but catching up faster than before. |
 | 💻 **Technical Skills** ||||| |
 | Tech/Cyber Sense | ✅ Y | 4 | 3 | 4 | 3.7 | Recognizes when code errors break main branch, improved at spotting JS, html issues. |
