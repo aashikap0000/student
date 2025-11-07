@@ -2,13 +2,11 @@
 layout: post
 title: "Awareness"
 description: "First line of defense from foreign invaders"
-permalink: /digital-famine/media-lit/submodule_1/
-parent: "Analytics/Admin"
+permalink: /awarenessgame/
 team: "Scratchers"
 submodule: 1
-categories: [CSP, Submodule, Analytics/Admin]
+categories: [CSP, Submodule, Analytics, Admin]
 tags: [analytics, submodule, curators]
-breadcrumb: true
 author: "Aashika Patel, Varada Vichare"
 date: 2025-10-21
 ---
