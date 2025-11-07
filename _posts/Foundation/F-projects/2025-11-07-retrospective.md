@@ -145,9 +145,13 @@ Next, I want to learn how to use APIs in JavaScript to bring live data into web 
 
 ## 7. Analytics Review 
 
+Commit Analytics: 
+
 <p align="center">
   <img src="{{ '/images/analytics.png' | relative_url }}" width="500" alt="Commit Analytics">
 </p>
+
+Commit Analytics for ScratchersMediaLiteracy: I made about 5-8 commits on the Awareness branch that aren't shown in these commits on the main branch.  
 
 <p align="center">
   <img src="{{ '/images/analyticsagain.png' | relative_url }}" width="500" alt="Commit Analytics in ScratchersMediaLiteracy">
