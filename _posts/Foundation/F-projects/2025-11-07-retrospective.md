@@ -45,7 +45,7 @@ Behaviorally, I’ve also grown. I’m more collaborative, responsible, and enga
 
 ## 2. Key Takeways from Past Sprints 
 
-# Tools
+Tools: 
 
 - Always activate venv before running code.
 
@@ -55,7 +55,7 @@ Behaviorally, I’ve also grown. I’m more collaborative, responsible, and enga
 
 - Run make before committing to test the site and ensure it builds correctly.
 
-# Fundamentals of JavaScript/Python
+Fundamentals of JavaScript/Python: 
 
 - JavaScript and Python look similar at first, but they differ in structure and syntax.
 
@@ -65,11 +65,13 @@ Behaviorally, I’ve also grown. I’m more collaborative, responsible, and enga
 
 - Lucas’ API homework seemed confusing at first, but once I understood the logic, it became manageable — and that confidence helped me during later projects like Night at the Museum.
 
-# Digital Famine
+Digital Famine: 
 
 - Collaboration is key. Our planet looked great overall, but some inconsistencies (like different end screens) showed we could improve coordination.
 
 - Having a clear plan and storyboard before coding made the process easier. It gave me a checklist of all features I wanted to include.
+
+Overall: Fail fast, recover faster- It took a longer time than I would've wanted but I believe that I have shown progress. 
 
 ## 3. Digital Famine
 
