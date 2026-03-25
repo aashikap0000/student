@@ -1,6 +1,6 @@
 ---
-layout: base
-title: I'm [Your Full Name]
+layout: post 
+title: Portfolio Home 
 hide: true
 ---
 
