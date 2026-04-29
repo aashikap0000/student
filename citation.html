@@ -1,0 +1,647 @@
+---
+layout: base
+title: Citation Builder
+permalink: /citation-builder/
+---
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  /* ── Design tokens — dark high-contrast theme ── */
+  :root {
+    --bg:        #0a0a0a;
+    --paper:     #141414;
+    --ink:       #ffffff;
+    --ink-muted: #a0a0a0;
+    --accent:    #f59e0b;
+    --accent2:   #f59e0b;
+    --border:    #2e2e2e;
+    --mono:      'DM Mono', monospace;
+    --serif:     'Playfair Display', serif;
+    --sans:      'DM Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* scope styles so they don't bleed into the base layout */
+  #citation-root {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    min-height: 70vh;
+    padding: 2rem 1rem 4rem;
+  }
+
+  /* ── Header ── */
+  #citation-root header {
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+    border-bottom: 3px double var(--accent);
+    padding-bottom: 1.2rem;
+  }
+  #citation-root header h1 {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    color: var(--ink);
+  }
+  #citation-root header p {
+    margin-top: .5rem;
+    color: var(--ink-muted);
+    font-size: .9rem;
+    font-family: var(--mono);
+  }
+
+  /* ── Card ── */
+  .cite-card {
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 2rem;
+    box-shadow: 0 0 0 1px var(--border), 4px 4px 0 var(--accent);
+  }
+
+  /* ── Form rows ── */
+  .field { margin-bottom: 1.1rem; }
+  .field label {
+    display: block;
+    font-size: .78rem;
+    font-family: var(--mono);
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: .4rem;
+  }
+  .field input,
+  .field select {
+    width: 100%;
+    padding: .6rem .8rem;
+    border: 1.5px solid var(--border);
+    border-radius: 4px;
+    background: #1e1e1e;
+    font-family: var(--sans);
+    font-size: .95rem;
+    color: var(--ink);
+    transition: border-color .15s;
+  }
+  .field input::placeholder { color: #555; }
+  .field input:focus,
+  .field select:focus { outline: none; border-color: var(--accent); }
+  .field select option { background: #1e1e1e; color: var(--ink); }
+  .field input.error { border-color: #ef4444; background: #1f0f0f; }
+
+  /* ── Buttons ── */
+  .btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.4rem; }
+  #citation-root button {
+    padding: .55rem 1.1rem;
+    border-radius: 4px;
+    border: 1.5px solid var(--border);
+    font-family: var(--mono);
+    font-size: .82rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background .15s, color .15s, transform .1s, border-color .15s;
+    color: var(--ink);
+  }
+  #citation-root button:active { transform: translateY(1px); }
+
+  .btn-primary {
+    background: var(--accent) !important;
+    color: #000 !important;
+    border-color: var(--accent) !important;
+    font-weight: 700 !important;
+  }
+  .btn-primary:hover { background: #d97706 !important; border-color: #d97706 !important; }
+
+  .btn-ghost { background: transparent; }
+  .btn-ghost:hover { background: #222; border-color: #555; }
+
+  .btn-save {
+    background: #fff !important;
+    color: #000 !important;
+    border-color: #fff !important;
+    font-weight: 700 !important;
+  }
+  .btn-save:hover { background: #d1d5db !important; border-color: #d1d5db !important; }
+
+  /* ── Output area ── */
+  .output-box {
+    margin-top: 1.5rem;
+    padding: 1.1rem 1.2rem;
+    border-left: 4px solid var(--accent);
+    background: #1a1500;
+    border-radius: 0 4px 4px 0;
+    display: none;
+  }
+  .output-box.visible { display: block; }
+  .output-label {
+    font-family: var(--mono);
+    font-size: .75rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .5rem;
+  }
+  #citation-text {
+    font-size: .95rem;
+    line-height: 1.6;
+    color: #ffffff;
+  }
+  #parenthetical-text {
+    margin-top: .6rem;
+    font-size: .85rem;
+    color: var(--ink-muted);
+    font-family: var(--mono);
+  }
+
+  /* ── Warning banner ── */
+  #warning-box {
+    margin-top: .9rem;
+    padding: .7rem 1rem;
+    background: #1f1200;
+    border: 1px solid #f59e0b;
+    border-radius: 4px;
+    font-size: .85rem;
+    color: #fcd34d;
+    display: none;
+  }
+  #warning-box.visible { display: block; }
+
+  /* ── Score banner ── */
+  .score-banner {
+    font-family: var(--mono);
+    font-size: .85rem;
+    padding: .5rem .9rem;
+    background: #1a1a1a;
+    border: 1px solid var(--border);
+    color: var(--ink-muted);
+    border-radius: 4px;
+    margin-top: .75rem;
+    display: none;
+  }
+  .score-banner.visible { display: block; }
+
+  /* ── Saved citations section ── */
+  .saved-section {
+    max-width: 700px;
+    margin: 2rem auto 0;
+    display: none;
+  }
+  .saved-section.visible { display: block; }
+
+  .saved-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    border-top: 2px solid var(--accent);
+    padding-top: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  .saved-header h2 {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    color: var(--ink);
+  }
+  .saved-header span {
+    font-family: var(--mono);
+    font-size: .8rem;
+    color: var(--ink-muted);
+  }
+
+  .citation-item {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: .9rem 1rem;
+    margin-bottom: .75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    animation: slideIn .25s ease;
+  }
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .citation-item-text {
+    font-size: .88rem;
+    line-height: 1.55;
+    flex: 1;
+    color: var(--ink);
+  }
+  .citation-item-style {
+    font-family: var(--mono);
+    font-size: .7rem;
+    background: var(--accent);
+    color: #000;
+    padding: 2px 8px;
+    border-radius: 3px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-weight: 700;
+  }
+  .delete-btn {
+    background: none !important;
+    border: none !important;
+    color: #ef4444 !important;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 0;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .delete-btn:hover { color: #f87171 !important; }
+</style>
+
+<div id="citation-root">
+
+  <header>
+    <h1>Citation Builder</h1>
+    <!-- PURPOSE: Tool that teaches students how to format citations in
+         APA, MLA, and Chicago styles. Fill in source details, generate
+         a properly formatted citation, and save it to your reference list. -->
+    <p>Format citations correctly · APA · MLA · Chicago</p>
+  </header>
+
+  <!-- ────────────────────────────────────────────────
+       INPUT REQUIREMENT:
+       The form fields below collect input from the user.
+       Each field is an event-driven interaction — the user
+       types/selects values that drive the program's output.
+  ──────────────────────────────────────────────── -->
+  <div class="cite-card">
+
+    <div class="field">
+      <label for="cite-style">Citation Style</label>
+      <select id="cite-style">
+        <option value="apa">APA</option>
+        <option value="mla">MLA (9th ed.)</option>
+        <option value="chicago">Chicago (author-date)</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="cite-author">Author(s) <small style="color:#666">(Last, First)</small></label>
+      <input id="cite-author" type="text" placeholder="e.g. Smith, Jane" />
+    </div>
+
+    <div class="field">
+      <label for="cite-date">Publication Date</label>
+      <input id="cite-date" type="text" placeholder="e.g. 2024, March 5" />
+    </div>
+
+    <div class="field">
+      <label for="cite-title">Article / Page Title</label>
+      <input id="cite-title" type="text" placeholder="e.g. Climate change and cities" />
+    </div>
+
+    <div class="field">
+      <label for="cite-source">Website / Publication Name</label>
+      <input id="cite-source" type="text" placeholder="e.g. The New York Times" />
+    </div>
+
+    <div class="field">
+      <label for="cite-url">URL (optional)</label>
+      <input id="cite-url" type="text" placeholder="https://..." />
+    </div>
+
+    <!-- OUTPUT REQUIREMENT: clicking "Generate" triggers visual output below -->
+    <div class="btn-row">
+      <button class="btn-primary" id="btn-generate">Generate Citation</button>
+      <button class="btn-ghost"   id="btn-copy">Copy</button>
+      <button class="btn-save"    id="btn-save">Save to List</button>
+      <button class="btn-ghost"   id="btn-clear">Clear</button>
+    </div>
+
+    <!-- OUTPUT: warning text shown if required fields are empty -->
+    <div id="warning-box"></div>
+
+    <!-- OUTPUT REQUIREMENT: visual/textual output based on user input -->
+    <div class="output-box" id="output-box">
+      <div class="output-label">Full Citation</div>
+      <div id="citation-text"></div>
+      <div id="parenthetical-text"></div>
+    </div>
+
+    <!-- Score feedback (gamification element) -->
+    <div class="score-banner" id="score-banner"></div>
+  </div>
+
+  <!-- ────────────────────────────────────────────────
+       LIST REQUIREMENT:
+       savedCitations is the list (array) that stores all
+       citation objects the user saves. It manages complexity
+       by keeping all saved citations in one place.
+       It is persisted to localStorage so it survives page refresh.
+  ──────────────────────────────────────────────── -->
+  <div class="saved-section" id="saved-section">
+    <div class="saved-header">
+      <h2>Reference List</h2>
+      <span id="cite-count"></span>
+      <button class="btn-ghost" id="btn-copy-all" style="margin-left:auto;">Copy All</button>
+      <button class="btn-ghost" id="btn-clear-all">Clear All</button>
+    </div>
+    <div id="saved-list"></div>
+  </div>
+
+</div><!-- #citation-root -->
+
+<script>
+/* =====================================================================
+   CITATION BUILDER — main script
+   Purpose : Help students build correctly formatted citations.
+   AI Credit: AI (Claude) assisted with debugging the buildCitation
+              procedure and helped write the parenthetical logic inside it.
+              All other code (UI, storage, event handlers) was written
+              by me with AI assistance in outlining and debugging (the core logic is my own). 
+   ===================================================================== */
+
+// ── STORAGE KEY for the list (persists across page reloads) ──
+const STORAGE_KEY = 'citation_builder_list_v1';
+
+// ════════════════════════════════════════════════════════════════
+// PROCEDURE REQUIREMENT
+//
+// Name        : buildCitation
+// Return type : Object { citation: string, parenthetical: string }
+// Parameters  :
+//   author (string) – last/first name of author
+//   date   (string) – publication date
+//   title  (string) – article or page title
+//   source (string) – website or publication name
+//   url    (string) – URL of the source
+//   style  (string) – "apa" | "mla" | "chicago"
+//
+// AI Credit: AI was used to debug formatting edge-cases inside this
+//            procedure and to help write the parenthetical logic.
+//
+// ALGORITHM: The body of this procedure contains:
+//   SEQUENCING  – parts are always built in the same fixed order
+//   SELECTION   – if/else branches choose format rules per style
+//   ITERATION   – a loop assembles non-empty parts into one string
+// ════════════════════════════════════════════════════════════════
+function buildCitation(author, date, title, source, url, style) {
+
+  // ── SEQUENCING: Step 1 – initialise the parts array ──
+  // Each element added here is one chunk of the citation.
+  let parts = [];
+
+  // ── SELECTION: choose formatting rules based on citation style ──
+  if (style === 'apa') {
+    // APA format: Author. (Date). Title. *Source*. URL
+    if (author) parts.push(author + '.');
+    if (date)   parts.push('(' + date + ').');
+    if (title)  parts.push(title + '.');
+    if (source) parts.push('<em>' + source + '</em>.');
+    if (url)    parts.push(url);
+
+  } else if (style === 'mla') {
+    // MLA 9th ed.: Author. "Title." *Source*, Date, URL.
+    if (author) parts.push(author + '.');
+    if (title)  parts.push('"' + title + '."');
+    if (source) parts.push('<em>' + source + '</em>,');
+    if (date)   parts.push(date + ',');
+    if (url)    parts.push(url + '.');
+
+  } else {
+    // Chicago author-date: Author. "Title." (Date). *Source*. URL
+    if (author) parts.push(author + '.');
+    if (title)  parts.push('"' + title + '."');
+    if (date)   parts.push('(' + date + ').');
+    if (source) parts.push('<em>' + source + '</em>.');
+    if (url)    parts.push(url);
+  }
+
+  // ── SEQUENCING: Step 2 – build parenthetical citation ──
+  let year = '';
+  const yearMatch = date.match(/\d{4}/);
+  if (yearMatch) year = yearMatch[0];
+
+  const lastName = author ? author.split(',')[0].trim() : '';
+
+  let parenthetical = '';
+  if (style === 'mla') {
+    parenthetical = lastName ? '(' + lastName + ')' : '';
+  } else if (style === 'chicago') {
+    parenthetical = lastName && year ? '(' + lastName + ' ' + year + ')'
+                  : lastName         ? '(' + lastName + ')'
+                  : '';
+  } else {
+    // APA: (LastName, Year)
+    parenthetical = lastName && year ? '(' + lastName + ', ' + year + ')'
+                  : lastName         ? '(' + lastName + ')'
+                  : '';
+  }
+
+  // ── ITERATION: Step 3 – loop over parts and join non-empty ones ──
+  let citation = '';
+  for (let i = 0; i < parts.length; i++) {
+    // SELECTION inside iteration: skip empty/whitespace parts
+    if (parts[i] && parts[i].trim() !== '') {
+      citation += (citation ? ' ' : '') + parts[i];
+    }
+  }
+
+  // ── SEQUENCING: Step 4 – return both citation and parenthetical ──
+  return { citation, parenthetical };
+}
+// ════════════════════════ END PROCEDURE ════════════════════════
+
+
+// ── Helper: get trimmed value from an input field ──
+function val(id) { return (document.getElementById(id).value || '').trim(); }
+
+// ── Helper: score a citation (how complete is it?) ──
+// Returns 0–5 reflecting how many fields were filled in.
+function scoreFields(author, date, title, source, url) {
+  let score = 0;
+  if (author) score++;
+  if (date)   score++;
+  if (title)  score++;
+  if (source) score++;
+  if (url)    score++;
+  return score;
+}
+
+// ── LIST: load saved citations from localStorage ──
+function loadList() {
+  return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+}
+
+// ── LIST: save the list back to localStorage ──
+function saveList(list) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+}
+
+// ── OUTPUT: render the saved citations list on screen ──
+function renderList() {
+  const list      = loadList();
+  const section   = document.getElementById('saved-section');
+  const container = document.getElementById('saved-list');
+  const countEl   = document.getElementById('cite-count');
+
+  if (list.length === 0) {
+    section.classList.remove('visible');
+    return;
+  }
+
+  section.classList.add('visible');
+  countEl.textContent = list.length + ' saved';
+  container.innerHTML = '';
+
+  // ITERATION: loop through every saved citation and render it
+  for (let i = 0; i < list.length; i++) {
+    const item = list[i];
+    const div  = document.createElement('div');
+    div.className = 'citation-item';
+    div.innerHTML =
+      '<span class="citation-item-text">' + item.citation + '</span>' +
+      '<span class="citation-item-style">' + item.style.toUpperCase() + '</span>' +
+      '<button class="delete-btn" data-index="' + i + '" title="Remove">✕</button>';
+    container.appendChild(div);
+  }
+
+  // Delete button events
+  container.querySelectorAll('.delete-btn').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const idx  = parseInt(this.dataset.index);
+      const list = loadList();
+      list.splice(idx, 1);
+      saveList(list);
+      renderList();
+    });
+  });
+}
+
+// ══════════════════════════════════════════════════
+// CALL TO PROCEDURE: Generate button
+// 1. Read INPUT from form fields
+// 2. CALL buildCitation (our developed procedure)
+// 3. Show OUTPUT in the output box
+// ══════════════════════════════════════════════════
+document.getElementById('btn-generate').addEventListener('click', function () {
+
+  // ── INPUT: read user-provided values ──
+  const author = val('cite-author');
+  const date   = val('cite-date');
+  const title  = val('cite-title');
+  const source = val('cite-source');
+  const url    = val('cite-url');
+  const style  = val('cite-style');
+
+  // ── Validate required fields ──
+  const missing = [];
+  const fields  = ['cite-author', 'cite-date', 'cite-title', 'cite-source'];
+  const labels  = ['Author', 'Date', 'Title', 'Source'];
+
+  fields.forEach(id => document.getElementById(id).classList.remove('error'));
+
+  // SELECTION: highlight any empty required field
+  for (let i = 0; i < fields.length; i++) {
+    if (!val(fields[i])) {
+      missing.push(labels[i]);
+      document.getElementById(fields[i]).classList.add('error');
+    }
+  }
+
+  const warningBox = document.getElementById('warning-box');
+  if (missing.length > 0) {
+    warningBox.textContent = '⚠ Missing: ' + missing.join(', ');
+    warningBox.classList.add('visible');
+  } else {
+    warningBox.classList.remove('visible');
+  }
+
+  // ── CALL to buildCitation procedure ──
+  const result = buildCitation(author, date, title, source, url, style);
+
+  // ── OUTPUT: display the citation ──
+  document.getElementById('citation-text').innerHTML = result.citation;
+  document.getElementById('parenthetical-text').textContent =
+    result.parenthetical ? 'In-text: ' + result.parenthetical : '';
+  document.getElementById('output-box').classList.add('visible');
+
+  // ── Score banner ──
+  const score  = scoreFields(author, date, title, source, url);
+  const banner = document.getElementById('score-banner');
+  const msgs   = ['', '🟥 Very incomplete', '🟧 Mostly incomplete',
+                  '🟨 Halfway there', '🟩 Almost complete!', '⭐ Perfect citation!'];
+  banner.textContent = 'Completeness: ' + score + '/5 — ' + msgs[score];
+  banner.classList.add('visible');
+});
+
+// ── Copy citation to clipboard ──
+// OUTPUT: copies text to clipboard
+document.getElementById('btn-copy').addEventListener('click', function () {
+  const el = document.getElementById('citation-text');
+  if (!el.textContent.trim()) { alert('Generate a citation first.'); return; }
+  navigator.clipboard.writeText(el.textContent)
+    .then(() => alert('✓ Copied to clipboard!'))
+    .catch(() => alert('Copy failed — please copy manually.'));
+});
+
+// ── Save citation to the list ──
+// LIST: adds a new citation object
+document.getElementById('btn-save').addEventListener('click', function () {
+  const citEl = document.getElementById('citation-text');
+  if (!citEl.textContent.trim()) { alert('Generate a citation first.'); return; }
+
+  const list = loadList();
+  list.push({
+    citation:      citEl.innerHTML,
+    parenthetical: document.getElementById('parenthetical-text').textContent,
+    style:         val('cite-style'),
+    savedAt:       Date.now()
+  });
+
+  saveList(list);
+  renderList();
+  alert('✓ Saved to Reference List!');
+});
+
+// ── Clear form ──
+document.getElementById('btn-clear').addEventListener('click', function () {
+  ['cite-author','cite-date','cite-title','cite-source','cite-url']
+    .forEach(id => { document.getElementById(id).value = ''; });
+  document.getElementById('output-box').classList.remove('visible');
+  document.getElementById('warning-box').classList.remove('visible');
+  document.getElementById('score-banner').classList.remove('visible');
+  document.getElementById('citation-text').innerHTML = '';
+  document.getElementById('parenthetical-text').textContent = '';
+  ['cite-author','cite-date','cite-title','cite-source']
+    .forEach(id => document.getElementById(id).classList.remove('error'));
+});
+
+// ── Copy all references as plain text ──
+document.getElementById('btn-copy-all').addEventListener('click', function () {
+  const list = loadList();
+  if (list.length === 0) { alert('No citations saved.'); return; }
+
+  // ITERATION: loop through list to build plain-text version
+  let text = '';
+  for (let i = 0; i < list.length; i++) {
+    const temp = document.createElement('div');
+    temp.innerHTML = list[i].citation;
+    text += temp.textContent + '\n\n';
+  }
+  navigator.clipboard.writeText(text.trim())
+    .then(() => alert('✓ All references copied!'))
+    .catch(() => alert('Copy failed — please copy manually.'));
+});
+
+// ── Clear all saved references ──
+document.getElementById('btn-clear-all').addEventListener('click', function () {
+  if (!confirm('Clear all saved citations?')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  renderList();
+});
+
+// ── On page load: restore the saved list ──
+renderList();
+</script>
